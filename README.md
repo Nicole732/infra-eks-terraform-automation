@@ -9,7 +9,6 @@
 - [Technologies used](#Technologies-Used)
 - [Project Description](#Project-Description)
 - [Terraform Configuration](#Terraform-Configuration)
-- [Initial Project](Initial-Project)
 - [Contributors](#contributors)
 - [Licensing](#licensing)
 
@@ -53,13 +52,6 @@ Notes:
     - aws_region
 - For verbose output, set export TF_LOG=DEBUG before running TF commands
 
-## Initial Project
-This project build on previous one: 
-![GitHub](https://github.com/Nicole732/devsecops-sast-dast-gitlab-cicd)
-It uses OAWSP Juice Shop vulnerable application as the application code:
-[![Juice Shop Screenshot Slideshow](https://img.shields.io/github/release/juice-shop/juice-shop.svg)](https://github.com/juice-shop/juice-shop/releases/latest)
-
-**Part 2**
 
 
 ## Contributors
