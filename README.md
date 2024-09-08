@@ -52,8 +52,6 @@ Notes:
     - aws_region
 - For verbose output, set export TF_LOG=DEBUG before running TF commands
 
-
-
 ## Contributors
 
 The contributors to this project are:
