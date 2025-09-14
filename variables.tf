@@ -1,5 +1,5 @@
 variable "aws_region" {
-  default = "eu-central-1"
+  default = "us-east-1"
 }
 
 variable "aws_access_key_id" {}
@@ -10,7 +10,7 @@ variable "name" {
 }
 
 variable "k8s_version" {
-  default = "1.27"
+  default = "1.34"
 }
 
 variable "vpc_cidr_block" {
