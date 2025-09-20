@@ -1,3 +1,17 @@
+# mapping AWS IAM roles to K8s Roles in configmap aws-auth
+locals {
+    aws_k8s_role_mapping = [{
+        rolearn  = aws_iam_role.external-admin.arn
+        username = "admin"
+        groups   = "none" #IF ["system:masters"] bad practice. avoid human user / read only permissions 
+    },
+    {
+        rolearn  = aws_iam_role.external-developer.arn
+        username = "developer"
+        groups   = "none" 
+    }]
+}
+
 #AWS IAM Role for admin 
 resource "aws_iam_role" "external-admin" {
   name = "external-admin"
@@ -71,4 +85,5 @@ resource "aws_iam_role" "external-admin" {
 
   }
 }
+
 
