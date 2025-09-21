@@ -28,3 +28,13 @@ variable "tags" {
     App = "eks-devsecops"
   }
 }
+
+# RBAC
+variable "user_for_admin_role" {
+  description = "The ARN of the user that will assume the admin role"
+  type        = string
+}
+variable "user_for_dev_role" {
+  description = "The ARN of the user that will assume the developer role"
+  type        = string
+}
