@@ -40,7 +40,7 @@ resource "kubernetes_role" "namespace-viewer" {
   }
 }
 #rolebinding for dev
-resource "kubernetes_cluster_role_binding" "namespace-viewer" {
+resource "kubernetes_role_binding" "namespace-viewer" {
   metadata {
     name      = "namespace-viewer"
     #namespace = "online-boutique"
