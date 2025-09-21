@@ -49,7 +49,7 @@ module "eks" {
 
   #RBAC: AWS + K8s
   manage_aws_auth_configmap = true
-  aws_auth_roles            = locals.aws_k8s_role_mapping
+  aws_auth_roles            = local.aws_k8s_role_mapping
 
 
   cluster_addons = {

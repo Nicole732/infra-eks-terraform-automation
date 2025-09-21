@@ -18,5 +18,70 @@ resource "kubernetes_namespace" "online-boutique" {
   metadata {
     name = "online-boutique"
   }
+}
 
+# k8s role for dev
+resource "kubernetes_role" "namespace-viewer" {
+  metadata {
+    name      = "namespace-viewer"
+    namespace = "online-boutique"
+  }
+
+  rule {
+    api_groups     = [""]
+    resources      = ["pods", "services", "secrets", "configmap", "persistentVolumes"]
+    resource_names = ["foo"]
+    verbs          = ["get", "list", "watch", "describe"]
+  }
+  rule {
+    api_groups = ["apps"]
+    resources  = ["deployments", "daemonsets", "statefulsets"]
+    verbs      = ["get", "list", "watch", "describe"]
+  }
+}
+#rolebinding for dev
+resource "kubernetes_cluster_role_binding" "namespace-viewer" {
+  metadata {
+    name      = "namespace-viewer"
+    #namespace = "online-boutique"
+  }
+  role_ref {
+    api_group = "rbac.authorization.k8s.io"
+    kind      = "Role"
+    name      = "cluster-admin"
+  }
+  subject {
+    kind      = "User"
+    name      = "developer"
+    api_group = "rbac.authorization.k8s.io"
+  }
+}
+
+#k8s cluster-role for admin user
+resource "kubernetes_cluster_role" "cluster-viewer" {
+  metadata {
+    name = "cluster-viewer"
+  }
+
+  rule {
+    api_groups = [""]
+    resources  = ["*"]
+    verbs      = ["get", "list", "watch", "describe"]
+  }
+}
+#clusterrole binding for admin user
+resource "kubernetes_cluster_role_binding" "cluster-viewer" {
+  metadata {
+    name = "cluster-viewer"
+  }
+  role_ref {
+    api_group = "rbac.authorization.k8s.io"
+    kind      = "ClusterRole"
+    name      = "cluster-admin"
+  }
+  subject {
+    kind      = "User"
+    name      = "admin"
+    api_group = "rbac.authorization.k8s.io"
+  }
 }
