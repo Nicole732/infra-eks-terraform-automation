@@ -3,14 +3,18 @@
 ## Project Details
 **Part 1**: Provision EKS cluster with Secure Access Management for developer and admin roles using Security Best Practices
 
+**Part 2**: Configure a secure production-grade release Iac pipeline for EKS
 
 ## Table of contents
 
-- [Technologies used](#Technologies-Used)
-- [Project Description](#Project-Description)
-- [Terraform Configuration](#Terraform-Configuration)
-- [Contributors](#contributors)
-- [Licensing](#licensing)
+- [Provision EKS cluster with Secure Access Management](#provision-eks-cluster-with-secure-access-management)
+  - [Project Details](#project-details)
+  - [Table of contents](#table-of-contents)
+  - [Technologies Used](#technologies-used)
+  - [Project Description:](#project-description)
+  - [Terraform Configuration](#terraform-configuration)
+  - [Contributors](#contributors)
+  - [Licensing](#licensing)
 
 ## Technologies Used
 AWS EKS, AWS IAM, Terraform, Kubernetes
@@ -23,6 +27,11 @@ AWS EKS, AWS IAM, Terraform, Kubernetes
     - Define Kubernetes Access with Role Based Access Control (RBAC) - creating K8s Roles and ClusterRoles
     - Configure Mapping between IAM Roles and K8s Users
 
+**Part 2**
+- Configure authentication with Gitlab Identity Provider (OIDC) in AWS
+- Configure a remote state
+- Provision infrastructure securely using temporal credentials and eliminate any human or static credentials
+
 
 ## Terraform Configuration
 - providers:
@@ -32,7 +41,7 @@ AWS EKS, AWS IAM, Terraform, Kubernetes
     - terraform-aws-modules/eks/aws ~> 19.16
     
 Terraform commands to execute the script:
-- initialise project & download providers
+- initialize project & download providers
     - *terraform init* 
 - preview what will be created with apply & see if any errors
     - *terraform plan*
@@ -46,7 +55,7 @@ Terraform commands to execute the script:
     - *terraform state list*
 
 Notes: 
-- Create terraform.tfvars file, make sure *.tfvars is in your .gitigonore file, and set following variables inside before running the script:
+- Create terraform.tfvars file, make sure *.tfvars is in your .gitignore file, and set following variables inside before running the script:
     - aws_access_key_id
     - aws_secret_access_key
     - aws_region
