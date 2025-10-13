@@ -45,7 +45,7 @@ build:
 
   before_script:
   #install aws cli
-  - apk add --no-cache add curl python3 py3-pip
+  - apk --no-cache add curl python3 py3-pip
   - pip3 install --no-cache-dir awscli --break-system-packages
 
   # establish authentication with AWS to get access credentials
@@ -80,7 +80,7 @@ deploy:
 
   before_script:
   #install aws cli
-  - apk add --no-cache add curl python3 py3-pip
+  - apk --no-cache add curl python3 py3-pip
   - pip3 install --no-cache-dir awscli --break-system-packages
 
   # establish authentication with AWS to get access credentials
