@@ -76,7 +76,7 @@ deploy:
   id_tokens:
     GITLAB_OIDC_TOKEN:
       aud: "https://gitlab.com"
-  stage: build
+  stage: deploy
 
   before_script:
   #install aws cli
