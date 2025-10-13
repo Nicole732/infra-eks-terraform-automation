@@ -1,7 +1,7 @@
 provider "aws" {
-  region     = var.aws_region
+  region = var.aws_region
   #access_key = var.aws_access_key_id
-  s#ecret_key = var.aws_secret_access_key
+  #secret_key = var.aws_secret_access_key
 }
 
 # VPC for Cluster

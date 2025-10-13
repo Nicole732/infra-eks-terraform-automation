@@ -1,9 +1,9 @@
 terraform {
   required_version = ">= 1.3"
   backend "s3" {
-    bucket         = "myapp-eks-terraform-state-732"
-    key            = "eks/terraform.tfstate"
-    region         = "us-east-1"
+    bucket = "myapp-eks-terraform-state-732"
+    key    = "eks/terraform.tfstate"
+    region = "us-east-1"
   }
   required_providers {
     aws = {
