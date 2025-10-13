@@ -100,7 +100,7 @@ deploy:
   - aws sts get-caller-identity
 
   script:
-  - terraform apply -input="false" "planfile" 
+  - terraform apply -input=false "planfile" 
   #when: manual. # to avoid auto deploy on every commit
 
 
