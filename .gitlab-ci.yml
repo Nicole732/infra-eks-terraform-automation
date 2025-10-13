@@ -32,7 +32,7 @@ init:
   - aws sts get-caller-identity
 
   script:
-    - terraform init
+    - terraform init -upgrade
   artifacts:
     paths:
       - .terraform/
