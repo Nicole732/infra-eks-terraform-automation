@@ -1,4 +1,4 @@
-# Provision EKS cluster with Secure Access Management
+# Provision EKS cluster with Secure Access Management and automate with Terraform and Gitlab CI/CD
 
 ## Project Details
 **Part 1**: Provision EKS cluster with Secure Access Management for developer and admin roles using Security Best Practices
@@ -7,7 +7,7 @@
 
 ## Table of contents
 
-- [Provision EKS cluster with Secure Access Management](#provision-eks-cluster-with-secure-access-management)
+- [Provision EKS cluster with Secure Access Management and automate with Terraform and Gitlab CI/CD](#provision-eks-cluster-with-secure-access-management-and-automate-with-terraform-and-gitlab-cicd)
   - [Project Details](#project-details)
   - [Table of contents](#table-of-contents)
   - [Technologies Used](#technologies-used)
@@ -17,7 +17,7 @@
   - [Licensing](#licensing)
 
 ## Technologies Used
-AWS EKS, AWS IAM, Terraform, Kubernetes
+AWS EKS, AWS IAM, Terraform, Kubernetes, Gitlab, Docker
 
 ## Project Description:
 **Part 1**
@@ -55,10 +55,11 @@ Terraform commands to execute the script:
     - *terraform state list*
 
 Notes: 
-- Create terraform.tfvars file, make sure *.tfvars is in your .gitignore file, and set following variables inside before running the script:
+- In step 1: Create terraform.tfvars file, make sure *.tfvars is in your .gitignore file, and set following variables inside before running the script:
     - aws_access_key_id
     - aws_secret_access_key
     - aws_region
+- In step 2: remove access key and secret access key, add role for AWS authentication and for EKS as environment variables in the CI/CD platform.
 - For verbose output, set export TF_LOG=DEBUG before running TF commands
 
 ## Contributors
