@@ -17,7 +17,7 @@ terraform {
     }
     helm = {
       source  = "hashicorp/helm"
-      version = "~> 2.11"       # 2.11–2.13 are steady with EKS
+      version = "~> 2.11" # 2.11–2.13 are steady with EKS
     }
 
 

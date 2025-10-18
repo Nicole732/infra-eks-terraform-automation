@@ -4,6 +4,7 @@ provider "aws" {
   #secret_key = var.aws_secret_access_key
 }
 
+# Defines a helm provider that uses the kubernetes provider to connect to the EKS cluster
 provider "helm" {
   kubernetes {
     host                   = module.eks.cluster_endpoint
@@ -83,6 +84,19 @@ module "eks" {
 
   tags = var.tags
 }
+#Define IRSA - Iam Role for Service Account for EBS CSI Driver
+module "ebs_csi_irsa" {
+  source                = "terraform-aws-modules/iam/aws//modules/iam-role-for-service-accounts-eks"
+  version               = "~> 5.39"
+  role_name_prefix      = "${var.name}-ebs-csi-"
+  attach_ebs_csi_policy = true
+  oidc_providers = {
+    main = {
+      provider_arn               = module.eks.oidc_provider_arn
+      namespace_service_accounts = ["kube-system:ebs-csi-controller-sa"]
+    }
+  }
+}
 
 module "eks_blueprints_addons" {
   source  = "aws-ia/eks-blueprints-addons/aws"
@@ -95,16 +109,22 @@ module "eks_blueprints_addons" {
 
   eks_addons = {
     aws-ebs-csi-driver = {
-      most_recent = true
+      #IRSA role
+      service_account_role_arn = module.ebs_csi_irsa.iam_role_arn
+      #most_recent = true
+      addon_version = "v1.51.0-eksbuild.1"
     }
     coredns = {
-      most_recent = true
+      addon_version = "v1.12.4-eksbuild.1"
+      #most_recent = true
     }
     vpc-cni = {
-      most_recent = true
+      #most_recent = true
+      addon_version = "v1.20.4-eksbuild.1"
     }
     kube-proxy = {
-      most_recent = true
+      #most_recent = true
+      addon_version = "v1.33.4-eksbuild.1"
     }
   }
 
