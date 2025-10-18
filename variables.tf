@@ -6,7 +6,7 @@ variable "aws_region" {
 #variable "aws_secret_access_key" {}
 
 variable "name" {
-  default = "myapp-eks"
+  default = "myapp-eks-2"
 }
 
 variable "k8s_version" {
