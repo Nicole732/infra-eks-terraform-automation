@@ -127,7 +127,7 @@ cleanup:
   - aws sts get-caller-identity
   script:
   - terraform destroy -auto-approve
-  when: manual
+  when: always #manual
 
 
 
