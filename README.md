@@ -16,7 +16,7 @@
 AWS EKS, AWS IAM, Terraform, Kubernetes
 
 ## Project Description:
-**Part 1**
+**Part 1:**
 - Infrastructure as Code configuration to: Provision a base EKS cluster
     - Add Configuration for Access Management:
 - Configure AWS IAM Roles for Access on AWS Level
